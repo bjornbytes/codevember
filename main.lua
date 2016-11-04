@@ -1,6 +1,6 @@
 local tick = require 'tick'
 local film = true
-local thing = '01'
+local thing = '03'
 
 function love.load()
   thing = require(thing)
@@ -10,6 +10,8 @@ function love.load()
 
   g = love.graphics
   u, v = g.getDimensions()
+
+  tick.rate = 1 / (thing.rate or 50)
 
   thing.load()
 end

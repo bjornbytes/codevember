@@ -1,6 +1,7 @@
 local thing = {}
 thing.background = { 40, 50, 60 }
 thing.id = 'codevember02'
+thing.rate = 50
 thing.start = 50
 thing.stop = 250
 
