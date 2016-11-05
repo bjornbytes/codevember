@@ -1,11 +1,11 @@
 local tick = require 'tick'
 local film = true
-local thing = '03'
+local id = '03'
 
 function love.load()
-  thing = require(thing)
+  thing = require(id)
 
-  love.filesystem.setIdentity(thing.id)
+  love.filesystem.setIdentity('codevember' .. id)
   love.window.setMode(thing.width or 512, thing.height or 512, { msaa = 8 })
 
   g = love.graphics

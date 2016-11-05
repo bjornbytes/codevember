@@ -1,5 +1,4 @@
 local thing = {}
-thing.id = 'codevember01'
 thing.rate = 50
 thing.start = 250
 thing.stop = 450

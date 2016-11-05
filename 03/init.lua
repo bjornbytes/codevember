@@ -1,5 +1,4 @@
 local thing = {}
-thing.id = 'codevember03'
 thing.background = { 12, 10, 14 }
 thing.width = 512
 thing.height = 512
