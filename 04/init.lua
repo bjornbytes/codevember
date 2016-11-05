@@ -20,15 +20,15 @@ function thing.load()
     }
 
     vec4 effect(vec4 color, Image texture, vec2 st, vec2 xy) {
+      int i;
       int steps = 70;
       float scale = 3;
-      vec2 uv = vec2((scale - 1.5) / 2, scale / 2) - scale * xy / uv;
+      vec2 c = vec2((scale - 1.5) / 2, scale / 2) - scale * xy / uv;
+      vec2 z = c;
 
-      int i;
-      vec2 z = uv;
       for (i = 0; i < steps; i++) {
-        float x = (z.x * z.x - z.y * z.y) + uv.x;
-        float y = (z.y * z.x + z.x * z.y) + uv.y;
+        float x = (z.x * z.x - z.y * z.y) + c.x;
+        float y = (z.y * z.x + z.x * z.y) + c.y;
 
         if (x * x + y * y > 4.) { break; }
 
@@ -40,13 +40,11 @@ function thing.load()
         return vec4(0., 0., 0., 1.);
       }
 
-      float factor = (1 - float(i) / steps);
+      float factor = float(i) / steps;
       float h = .75;
-      float s = factor * (.5 + (.5 + cos((1 - factor) * 30 + t * PI) / 2)) / 2;
-      float b = clamp(pow(5 + 1 - factor, .5), 0, 1);
-      vec3 c = hsb2rgb(vec3(h, s, b));
-
-      return vec4(c, 1.);
+      float s = (1 - factor) * (.5 + .25 * cos(factor * 30 + t * PI));
+      float b = clamp(pow(5 + factor, .5), 0, 1);
+      return vec4(hsb2rgb(vec3(h, s, b)), 1.);
     }
   ]])
 
